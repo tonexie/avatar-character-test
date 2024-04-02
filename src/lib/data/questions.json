@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "question": "You're about to embark on a dangerous mission. Do you meticulously craft a battle plan or thrive on adapting to the situation as it unfolds?",
-    "category": [
-      "Planning",
-      "Improvisation"
+    "question": "You're about to embark on a dangerous mission.",
+    "options": [
+      "Do you meticulously craft a battle plan?",
+      "Thrive on adapting to the situation as it unfolds?"
     ],
     "response": [
       {
