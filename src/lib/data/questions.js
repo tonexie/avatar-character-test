@@ -1,4 +1,4 @@
-[
+export default [
   {
     "id": 1,
     "question": "You're about to embark on a dangerous mission.",
