@@ -1,0 +1,388 @@
+[
+  {
+    "id": 1,
+    "question": "You're about to embark on a dangerous mission. Do you meticulously craft a battle plan or thrive on adapting to the situation as it unfolds?",
+    "category": [
+      "Planning",
+      "Improvisation"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 3
+      },
+      {
+        "character": "Katara",
+        "response": 2
+      },
+      {
+        "character": "Sokka",
+        "response": 1
+      },
+      {
+        "character": "Toph",
+        "response": 4
+      },
+      {
+        "character": "Suki",
+        "response": 2
+      },
+      {
+        "character": "Azula",
+        "response": 3
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 2
+      },
+      {
+        "character": "Korra",
+        "response": 5
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 3
+      },
+      {
+        "character": "Asami",
+        "response": 2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "When leading a team, do you inspire with charisma and optimism, or command respect through clear direction and strategy?",
+    "category": [
+      "Inspiration",
+      "Strategy"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 3
+      },
+      {
+        "character": "Katara",
+        "response": 1
+      },
+      {
+        "character": "Sokka",
+        "response": 5
+      },
+      {
+        "character": "Toph",
+        "response": 3
+      },
+      {
+        "character": "Suki",
+        "response": 3
+      },
+      {
+        "character": "Azula",
+        "response": 5
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 2
+      },
+      {
+        "character": "Korra",
+        "response": 2
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 5
+      },
+      {
+        "character": "Asami",
+        "response": 2
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "When someone disagrees with you, do you try to understand their point of view, or settle it with a good old-fashioned bending duel?",
+    "category": [
+      "Understand Compromise",
+      "Conflict Resolution"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 1
+      },
+      {
+        "character": "Katara",
+        "response": 2
+      },
+      {
+        "character": "Sokka",
+        "response": 4
+      },
+      {
+        "character": "Toph",
+        "response": 5
+      },
+      {
+        "character": "Suki",
+        "response": 3
+      },
+      {
+        "character": "Azula",
+        "response": 5
+      },
+      {
+        "character": "Zuko",
+        "response": 3
+      },
+      {
+        "character": "Tenzin",
+        "response": 1
+      },
+      {
+        "character": "Korra",
+        "response": 4
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 5
+      },
+      {
+        "character": "Asami",
+        "response": 2
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Do you believe traditions are sacred and unbreakable, or are you all about adapting things to the current situation (even if it means bending the rules a bit)?",
+    "category": [
+      "Tradition",
+      "Adaptability"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 2
+      },
+      {
+        "character": "Katara",
+        "response": 3
+      },
+      {
+        "character": "Sokka",
+        "response": 4
+      },
+      {
+        "character": "Toph",      
+        "response": 5
+      },
+      {
+        "character": "Suki",
+        "response": 3
+      },
+      {
+        "character": "Azula",
+        "response": 4
+      },
+      {
+        "character": "Zuko",
+        "response": 2
+      },
+      {
+        "character": "Tenzin",
+        "response": 1
+      },
+      {
+        "character": "Korra",
+        "response": 4
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 3
+      },
+      {
+        "character": "Asami",
+        "response": 4
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Are you an open book when it comes to emotions, or do you keep your feelings buried deeper than a hidden badgermole city?",
+    "category": [
+      "Emotional Expression",
+      "Control"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 2
+      },
+      {
+        "character": "Katara",
+        "response": 2
+      },
+      {
+        "character": "Sokka",
+        "response": 3
+      },
+      {
+        "character": "Toph",
+        "response": 2
+      },
+      {
+        "character": "Suki",
+        "response": 4
+      },
+      {
+        "character": "Azula",
+        "response": 5
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 4
+      },
+      {
+        "character": "Korra",
+        "response": 1
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 4
+      },
+      {
+        "character": "Asami",
+        "response": 3
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "When faced with a challenge, do you carefully analyze the risks before acting, or take a bold leap of faith and trust your instincts?",
+    "category": [
+      "Risk-Taking",
+      "Intuition"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 3
+      },
+      {
+        "character": "Katara",
+        "response": 4
+      },
+      {
+        "character": "Sokka",
+        "response": 1
+      },
+      {
+        "character": "Toph",
+        "response": 4
+      },
+      {
+        "character": "Suki",
+        "response": 3
+      },
+      {
+        "character": "Azula",
+        "response": 1
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 2
+      },
+      {
+        "character": "Korra",
+        "response": 5
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 2
+      },
+      {
+        "character": "Asami",
+        "response": 3
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Are you known for your witty sarcasm or infectious laughter, or do you prefer a more serious and focused demeanor?",
+    "category": [
+      "Sense of Humor",
+      "Seriousness"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What drives you the most? Helping people and making the world a better place, or achieving your goals and recognition?",
+    "category": [
+      "Motivation",
+      "Ambition"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Do you learn best by absorbing information from books and scrolls, or through hands-on experiences and trial-and-error?",
+    "category": [
+      "Learning Style",
+      "Experience"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Do you crave a deep and committed relationship, or are you comfortable with a more casual and independent approach to love?",
+    "category": [
+      "Relationships",
+      "Independence"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Dealing with Failure: Do you bounce back from setbacks quickly and with determination, or do you dwell on them and struggle to move forward?",
+    "category": [
+      "Resilience",
+      "Self-Doubt"
+    ],
+    "character_associations": {
+      "SA": "Aang",
+      "SD": [
+        "Zuko",
+        "Toph"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "question": "Morality: Do you follow a strict moral code, even when it's difficult, or are you flexible with your principles depending on the situation?",
+    "category": [
+      "Morality",
+      "Pragmatism"
+    ],
+    "character_associations": {
+      "SA": [
+        "Aang",
+        "Katara"
+      ],
+      "SD": "Azula"
+    }
+  }
+]
