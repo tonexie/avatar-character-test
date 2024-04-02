@@ -182,7 +182,7 @@
         "response": 4
       },
       {
-        "character": "Toph",      
+        "character": "Toph",
         "response": 5
       },
       {
@@ -329,6 +329,52 @@
     "category": [
       "Sense of Humor",
       "Seriousness"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 2
+      },
+      {
+        "character": "Katara",
+        "response": 4
+      },
+      {
+        "character": "Sokka",
+        "response": 1
+      },
+      {
+        "character": "Toph",
+        "response": 1
+      },
+      {
+        "character": "Suki",
+        "response": 4
+      },
+      {
+        "character": "Azula",
+        "response": 5
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 5
+      },
+      {
+        "character": "Korra",
+        "response": 2
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 5
+      },
+      {
+        "character": "Asami",
+        "response": 2
+      }
     ]
   },
   {
@@ -337,6 +383,52 @@
     "category": [
       "Motivation",
       "Ambition"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 1
+      },
+      {
+        "character": "Katara",
+        "response": 1
+      },
+      {
+        "character": "Sokka",
+        "response": 3
+      },
+      {
+        "character": "Toph",
+        "response": 4
+      },
+      {
+        "character": "Suki",
+        "response": 2
+      },
+      {
+        "character": "Azula",
+        "response": 5
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 1
+      },
+      {
+        "character": "Korra",
+        "response": 2
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 3
+      },
+      {
+        "character": "Asami",
+        "response": 2
+      }
     ]
   },
   {
@@ -345,6 +437,52 @@
     "category": [
       "Learning Style",
       "Experience"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 3
+      },
+      {
+        "character": "Katara",
+        "response": 4
+      },
+      {
+        "character": "Sokka",
+        "response": 2
+      },
+      {
+        "character": "Toph",
+        "response": 5
+      },
+      {
+        "character": "Suki",
+        "response": 4
+      },
+      {
+        "character": "Azula",
+        "response": 3
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 2
+      },
+      {
+        "character": "Korra",
+        "response": 5
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 4
+      },
+      {
+        "character": "Asami",
+        "response": 2
+      }
     ]
   },
   {
@@ -353,36 +491,106 @@
     "category": [
       "Relationships",
       "Independence"
+    ],
+    "response": [
+      {
+        "character": "Aang",
+        "response": 1
+      },
+      {
+        "character": "Katara",
+        "response": 1
+      },
+      {
+        "character": "Sokka",
+        "response": 3
+      },
+      {
+        "character": "Toph",
+        "response": 5
+      },
+      {
+        "character": "Suki",
+        "response": 4
+      },
+      {
+        "character": "Azula",
+        "response": 5
+      },
+      {
+        "character": "Zuko",
+        "response": 4
+      },
+      {
+        "character": "Tenzin",
+        "response": 1
+      },
+      {
+        "character": "Korra",
+        "response": 3
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 4
+      },
+      {
+        "character": "Asami",
+        "response": 4
+      }
     ]
   },
   {
     "id": 11,
-    "question": "Dealing with Failure: Do you bounce back from setbacks quickly and with determination, or do you dwell on them and struggle to move forward?",
-    "category": [
-      "Resilience",
-      "Self-Doubt"
-    ],
-    "character_associations": {
-      "SA": "Aang",
-      "SD": [
-        "Zuko",
-        "Toph"
-      ]
-    }
-  },
-  {
-    "id": 12,
     "question": "Morality: Do you follow a strict moral code, even when it's difficult, or are you flexible with your principles depending on the situation?",
     "category": [
       "Morality",
       "Pragmatism"
     ],
-    "character_associations": {
-      "SA": [
-        "Aang",
-        "Katara"
-      ],
-      "SD": "Azula"
-    }
+    "response": [
+      {
+        "character": "Aang",
+        "response": 1
+      },
+      {
+        "character": "Katara",
+        "response": 2
+      },
+      {
+        "character": "Sokka",
+        "response": 4
+      },
+      {
+        "character": "Toph",
+        "response": 4
+      },
+      {
+        "character": "Suki",
+        "response": 4
+      },
+      {
+        "character": "Azula",
+        "response": 5
+      },
+      {
+        "character": "Zuko",
+        "response": 2
+      },
+      {
+        "character": "Tenzin",
+        "response": 1
+      },
+      {
+        "character": "Korra",
+        "response": 4
+      },
+      {
+        "character": "Lin Beifong",
+        "response": 2
+      },
+      {
+        "character": "Asami",
+        "response": 2
+      }
+    ]
   }
 ]

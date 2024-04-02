@@ -1,20 +1,11 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
-	import Hero from '$lib/components/Hero.svelte';
+	import BackgroundImg from '$lib/components/BackgroundImg.svelte';
+	import StartTest from '$lib/components/home/StartTest.svelte';
 </script>
 
-<div class="home-container">
-  <Header />
-  <Hero />
+<div class="flex flex-col">
+	<BackgroundImg image="./images/avatar-hero-v2.jpg" />
+	<Header />
+	<StartTest />
 </div>
-
-<style>
-  * {
-    border: black 1px solid;
-  }
-
-  .home-container {
-    display: flex;
-    flex-direction: column;
-  }
-</style>
