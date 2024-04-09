@@ -1,6 +1,7 @@
 <script>
 	import questions from '$lib/data/questions.js';
 	import { userAnswers } from '$lib/data/userAnswersStore.js';
+	import { goto } from '$app/navigation';
 
 	let rating = '';
 	let currQ = 0;
@@ -9,7 +10,8 @@
 		if (currQ < questions.length - 1) {
 			processUserAnswer();
 		} else {
-			determineUserCharacter();
+			const character = determineUserCharacter();
+			goto(`/result/${character.slug}`);
 		}
 	}
 
@@ -28,7 +30,7 @@
 	}
 
 	function determineUserCharacter() {
-		const lowestScore = $userAnswers.reduce(
+		const lowestScoreList = $userAnswers.reduce(
 			(acc, curr) => {
 				const value = Object.values(curr)[0];
 				if (value < acc.minValue) {
@@ -41,7 +43,9 @@
 			},
 			{ minValue: Infinity, minObjects: [] }
 		);
-		console.log(lowestScore.minObjects);
+		const characterResult =
+			lowestScoreList.minObjects[Math.floor(Math.random() * lowestScoreList.minObjects.length)];
+		return characterResult;
 	}
 </script>
 
