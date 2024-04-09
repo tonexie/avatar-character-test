@@ -6,16 +6,42 @@
 	let currQ = 0;
 
 	function handleSubmit() {
+		if (currQ < questions.length - 1) {
+			processUserAnswer();
+		} else {
+			determineUserCharacter();
+		}
+	}
+
+	function processUserAnswer() {
 		console.log('Selected rating:', rating);
 		const charRes = questions[currQ].response;
 
-    // algorithm for updating character scores
+		// algorithm for updating character scores
 		for (let i = 0; i < charRes.length; i++) {
 			const charScore = Math.abs(charRes[i].response - rating);
 			const currChar = charRes[i].character;
 			$userAnswers[i][`${currChar}`] += charScore;
 		}
-    currQ++
+		console.log($userAnswers);
+		currQ++;
+	}
+
+	function determineUserCharacter() {
+		const lowestScore = $userAnswers.reduce(
+			(acc, curr) => {
+				const value = Object.values(curr)[0];
+				if (value < acc.minValue) {
+					acc.minValue = value;
+					acc.minObjects = [curr];
+				} else if (value === acc.minValue) {
+					acc.minObjects.push(curr);
+				}
+				return acc;
+			},
+			{ minValue: Infinity, minObjects: [] }
+		);
+		console.log(lowestScore.minObjects);
 	}
 </script>
 
@@ -24,7 +50,7 @@
 		class="flex flex-col justify-between items-center bg-white p-8 rounded-lg shadow-lg w-[70%] h-[60%]"
 	>
 		<h1 class=" text-3xl font-bold pb-4">Question {questions[currQ].id}</h1>
-		<p>{questions[currQ].question}</p>
+		<p>{questions[currQ].scenario}</p>
 
 		<div class="flex justify-between w-full">
 			<p class="w-[40%] text-center">{questions[currQ].options[0]}</p>

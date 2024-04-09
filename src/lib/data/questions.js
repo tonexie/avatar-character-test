@@ -1,7 +1,7 @@
 export default [
   {
     "id": 1,
-    "question": "You're about to embark on a dangerous mission.",
+    "scenario": "You're about to embark on a dangerous mission.",
     "options": [
       "Do you meticulously craft a battle plan?",
       "Thrive on adapting to the situation as it unfolds?"
@@ -55,10 +55,10 @@ export default [
   },
   {
     "id": 2,
-    "question": "When leading a team, do you inspire with charisma and optimism, or command respect through clear direction and strategy?",
-    "category": [
-      "Inspiration",
-      "Strategy"
+    "scenario": "You are leading a team",
+    "options": [
+      "Do you inspire with charisma and optimism?",
+      "Command respect through clear direction and strategy"
     ],
     "response": [
       {
@@ -109,10 +109,10 @@ export default [
   },
   {
     "id": 3,
-    "question": "When someone disagrees with you, do you try to understand their point of view, or settle it with a good old-fashioned bending duel?",
-    "category": [
-      "Understand Compromise",
-      "Conflict Resolution"
+    "scenario": "When someone disagrees with you",
+    "options": [
+      "Do you try to understand their point of view?",
+      "Settle it with a good old-fashioned bending duel?"
     ],
     "response": [
       {
@@ -163,10 +163,10 @@ export default [
   },
   {
     "id": 4,
-    "question": "Do you believe traditions are sacred and unbreakable, or are you all about adapting things to the current situation (even if it means bending the rules a bit)?",
-    "category": [
-      "Tradition",
-      "Adaptability"
+    "scenario": "Navigating the shifting tides of Republic City",
+    "options": [
+      "Do you believe traditions are sacred and unbreakable?",
+      "Are you all about adapting things to the current situation (even if it means bending the rules a bit)?"
     ],
     "response": [
       {
@@ -217,10 +217,10 @@ export default [
   },
   {
     "id": 5,
-    "question": "Are you an open book when it comes to emotions, or do you keep your feelings buried deeper than a hidden badgermole city?",
-    "category": [
-      "Emotional Expression",
-      "Control"
+    "scenario": "During a tense negotiation between the Water Tribes",
+    "options": [
+      "Do you openly share your feelings?",
+      "Are you keeping them as guarded as the secrets of the Foggy Swamp?"
     ],
     "response": [
       {
@@ -271,10 +271,10 @@ export default [
   },
   {
     "id": 6,
-    "question": "When faced with a challenge, do you carefully analyze the risks before acting, or take a bold leap of faith and trust your instincts?",
-    "category": [
-      "Risk-Taking",
-      "Intuition"
+    "scenario": "When faced with a challenge",
+    "options": [
+      "Do you carefully analyze the risks before acting?",
+      "Take a bold leap of faith and trust your instincts?"
     ],
     "response": [
       {
@@ -325,10 +325,10 @@ export default [
   },
   {
     "id": 7,
-    "question": "Are you known for your witty sarcasm or infectious laughter, or do you prefer a more serious and focused demeanor?",
-    "category": [
-      "Sense of Humor",
-      "Seriousness"
+    "scenario": "At a gathering of the United Republic Council",
+    "options": [
+      "Are you lightening the mood with witty sarcasm and laughter?",
+      "Are you the pillar of focus and seriousness?"
     ],
     "response": [
       {
@@ -379,10 +379,10 @@ export default [
   },
   {
     "id": 8,
-    "question": "What drives you the most? Helping people and making the world a better place, or achieving your goals and recognition?",
-    "category": [
-      "Motivation",
-      "Ambition"
+    "scenario": "What drives you the most?",
+    "options": [
+      "Helping people and making the world a better place",
+      "Achieving your goals and recognition"
     ],
     "response": [
       {
@@ -433,10 +433,10 @@ export default [
   },
   {
     "id": 9,
-    "question": "Do you learn best by absorbing information from books and scrolls, or through hands-on experiences and trial-and-error?",
-    "category": [
-      "Learning Style",
-      "Experience"
+    "scenario": "Within the hallowed halls of Wan Shi Tong's Library",
+    "options": [
+      "Do you learn best by absorbing information from books and scrolls?",
+      "Through hands-on experiences and trial-and-error in the world outside?"
     ],
     "response": [
       {
@@ -487,64 +487,10 @@ export default [
   },
   {
     "id": 10,
-    "question": "Do you crave a deep and committed relationship, or are you comfortable with a more casual and independent approach to love?",
-    "category": [
-      "Relationships",
-      "Independence"
-    ],
-    "response": [
-      {
-        "character": "Aang",
-        "response": 1
-      },
-      {
-        "character": "Katara",
-        "response": 1
-      },
-      {
-        "character": "Sokka",
-        "response": 3
-      },
-      {
-        "character": "Toph",
-        "response": 5
-      },
-      {
-        "character": "Suki",
-        "response": 4
-      },
-      {
-        "character": "Azula",
-        "response": 5
-      },
-      {
-        "character": "Zuko",
-        "response": 4
-      },
-      {
-        "character": "Tenzin",
-        "response": 1
-      },
-      {
-        "character": "Korra",
-        "response": 3
-      },
-      {
-        "character": "Lin Beifong",
-        "response": 4
-      },
-      {
-        "character": "Asami",
-        "response": 4
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "question": "Morality: Do you follow a strict moral code, even when it's difficult, or are you flexible with your principles depending on the situation?",
-    "category": [
-      "Morality",
-      "Pragmatism"
+    "scenario": "In the challenging terrain of the Earth Kingdom",
+    "options": [
+      "Do you stand firm on a strict moral compass even when faced with challenges",
+      "Flexible with your perspective depending on the situation"
     ],
     "response": [
       {

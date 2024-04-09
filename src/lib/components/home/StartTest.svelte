@@ -5,4 +5,5 @@
       Start Personality Test
     </button>
   </a>
+  <a href="/result/aang">aang</a>
 </div>
