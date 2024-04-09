@@ -2,6 +2,9 @@
 	import questions from '$lib/data/questions.js';
 	import { userAnswers } from '$lib/data/userAnswersStore.js';
 	import { goto } from '$app/navigation';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	let rating = '';
 	let currQ = 0;
@@ -9,6 +12,7 @@
 	function handleSubmit() {
 		if (currQ < questions.length - 1) {
 			processUserAnswer();
+			dispatch('next');
 		} else {
 			const character = determineUserCharacter();
 			goto(`/result/${character.slug}`);

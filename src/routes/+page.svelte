@@ -9,9 +9,3 @@
 	<Header />
 	<StartTest />
 </div>
-
-<style>
-     body {
-        overflow: hidden;
-    }
-</style>

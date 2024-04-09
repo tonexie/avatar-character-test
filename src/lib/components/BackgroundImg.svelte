@@ -1,33 +1,55 @@
 <script>
-	export let image = './images/avatar-landscape1.png';
-	export let scale = 1.15;
+	export let image;
+	export let refresher = 0;
+
+	const images = [
+		{ path: '/backgrounds/avatar-landscape1.jpg' },
+		{ path: '/backgrounds/avatar-landscape2.png' },
+		{ path: '/backgrounds/avatar-landscape3.png' },
+		{ path: '/backgrounds/avatar-landscape4.png' },
+		{ path: '/backgrounds/avatar-landscape5.webp' },
+		{ path: '/backgrounds/avatar-landscape6.avif' },
+		{ path: '/backgrounds/avatar-landscape7.jpg' },
+		{ path: '/backgrounds/avatar-landscape8.avif' }
+	];
+
+	function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex].path;
+    }
+
+    if (image === undefined) {
+        image = getRandomImage();
+    }
+
+    $: if (refresher) {
+        image = getRandomImage();
+    }
 </script>
 
 <div class="container">
-	<img src={image} alt="Avatar: The Last Airbender background" class="image" style={`transform: translate(-50%, -50%) scale(${scale})`}/>
+	<img src={image} alt="Avatar: The Last Airbender background" class="image" />
 </div>
 
 <style>
 	.container {
 		position: fixed;
-		top: 49.5%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		max-width: none;
-		height: 101vh;
+		top: 0;
+		left: 0;
+		min-width: 100%;
+		min-height: 100%;
 		z-index: -1;
 		overflow: hidden;
 	}
 
-	.image {
+	img {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) scale(1.1);
-		width: auto;
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: 100%;
-		max-width: none;
-		z-index: -1;
-		overflow: hidden;
+		object-fit: cover;
+		min-width: 100vw;
+		min-height: 100vh;
 	}
 </style>
