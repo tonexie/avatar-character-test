@@ -1,10 +1,29 @@
 <script>
-  export let title = 'Avatar Trivia';
+  const logo = '/images/avatar-logo.png'
 </script>
 
-<header class="header px-4 py-2 flex items-center justify-between absolute top-0 left-0 w-screen">
-  <h1>{title}</h1>
-  </header>
+<header class='py-4 px-4 sm:px-10  font-[sans-serif] min-h-[70px]'>
+  <div class='flex flex-wrap items-center justify-between gap-5 relative'>
+    <a href="/"><img src={logo} alt="logo" class='w-36' />
+    </a>
+    <div class='flex lg:order-1 max-sm:ml-auto'>
+      <button
+        class='px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]'>Login</button>
+      <button
+        class='px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff] ml-3'>Sign
+        up</button>
+    </div>
+  </div>
+</header>
 
-<style >
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
 </style>

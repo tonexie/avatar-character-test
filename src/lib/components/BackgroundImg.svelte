@@ -10,7 +10,8 @@
 		{ path: '/backgrounds/avatar-landscape5.webp' },
 		{ path: '/backgrounds/avatar-landscape6.avif' },
 		{ path: '/backgrounds/avatar-landscape7.jpg' },
-		{ path: '/backgrounds/avatar-landscape8.avif' }
+		{ path: '/backgrounds/avatar-landscape8.png' },
+		{ path: '/backgrounds/avatar-landscape9.jpg' },
 	];
 
 	function getRandomImage() {

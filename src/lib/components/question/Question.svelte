@@ -20,7 +20,6 @@
 	}
 
 	function processUserAnswer() {
-		console.log('Selected rating:', rating);
 		const charRes = questions[currQ].response;
 
 		// algorithm for updating character scores
@@ -30,6 +29,7 @@
 			$userAnswers[i][`${currChar}`] += charScore;
 		}
 		console.log($userAnswers);
+		rating = undefined;
 		currQ++;
 	}
 
@@ -55,28 +55,89 @@
 
 <div class="flex justify-center items-center h-screen">
 	<div
-		class="flex flex-col justify-between items-center bg-white p-8 rounded-lg shadow-lg w-[70%] h-[60%]"
+		class="flex flex-col justify-between items-center bg-white p-4 border-red-700 rounded-lg shadow-lg w-[70%] h-[60%]"
 	>
-		<h1 class=" text-3xl font-bold pb-4">Question {questions[currQ].id}</h1>
+		<h1 class=" text-3xl font-bold p-2">Question {questions[currQ].id}</h1>
 		<p>{questions[currQ].scenario}</p>
-
-		<div class="flex justify-between w-full">
-			<p class="w-[40%] text-center">{questions[currQ].options[0]}</p>
-			<p>OR</p>
-			<p class="w-[40%] text-center">{questions[currQ].options[1]}</p>
-		</div>
 
 		<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center w-full">
 			<div class="flex w-[70%] justify-between m-auto">
 				{#each [1, 2, 3, 4, 5] as rate}
-					<label class="flex flex-col items-center">
-						<input type="radio" bind:group={rating} value={rate} />
-						{rate}
-					</label>
+					<div class="radio-wrapper">
+						<input type="radio" id={`rate-${rate}`} bind:group={rating} value={rate} />
+						<label for={`rate-${rate}`} class="radio-label">
+							{rate}
+						</label>
+					</div>
 				{/each}
 			</div>
 
-			<button type="submit">Next Question</button>
+			<button type="submit" disabled={!rating}>Next Question</button>
 		</form>
 	</div>
 </div>
+
+<style>
+	.radio-wrapper {
+		position: relative;
+		width: 40px;
+		height: 40px;
+	}
+
+	.radio-wrapper input[type='radio'] {
+		position: absolute;
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	.radio-label {
+		cursor: pointer;
+		width: 100%;
+		height: 100%;
+		border: 2px solid transparent;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.3s ease;
+		background-color: lightgrey;
+	}
+
+	.radio-wrapper input[type='radio']:checked + .radio-label {
+		border-color: blue;
+		background-color: rgba(0, 0, 255, 0.2);
+	}
+
+	.radio-label:hover {
+		background-color: rgba(0, 0, 255, 0.1);
+	}
+
+	button {
+		display: inline-block;
+		width: 80%;
+		margin-top: 1.2em;
+		padding: 1em;
+		max-width: 220px;
+		font-size: 0.9em;
+		color: #d42d78;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: 0.15em;
+		background: white;
+		border: none;
+		outline: none;
+		border-radius: 5em;
+		box-shadow: 0 15px 20px -10px rgba(0, 0, 0, 0.3);
+		transition:
+			color 0.6s,
+			box-shadow 0.3s,
+			transform 0.3s;
+		cursor: pointer;
+	}
+
+	button:hover {
+		box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
+		color: #6f6f6f;
+	}
+</style>

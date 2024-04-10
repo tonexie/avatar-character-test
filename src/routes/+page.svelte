@@ -6,6 +6,5 @@
 
 <div class="flex flex-col overflow-hidden">
 	<BackgroundImg image="./images/avatar-hero-v2.jpg" />
-	<Header />
 	<StartTest />
 </div>
