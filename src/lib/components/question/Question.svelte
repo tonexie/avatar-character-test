@@ -10,10 +10,11 @@
 	let currQ = 0;
 
 	function handleSubmit() {
-		if (currQ < questions.length - 1) {
+		if (currQ < questions.length) {
 			processUserAnswer();
 			dispatch('next');
-		} else {
+		}
+		if (currQ == questions.length - 1) {
 			const character = determineUserCharacter();
 			goto(`/result/${character.slug}`);
 		}
@@ -55,25 +56,25 @@
 
 <div class="flex justify-center items-center h-screen">
 	<div
-		class="flex flex-col justify-between items-center bg-white p-4 border-red-700 rounded-lg shadow-lg w-[70%] h-[60%]"
+		class="flex flex-col justify-start items-center bg-sky-500 p-4 rounded-lg shadow-lg w-[60%]"
 	>
-		<h1 class=" text-3xl font-bold p-2">Question {questions[currQ].id}</h1>
-		<p>{questions[currQ].scenario}</p>
-
-		<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center w-full">
-			<div class="flex w-[70%] justify-between m-auto">
-				{#each [1, 2, 3, 4, 5] as rate}
-					<div class="radio-wrapper">
-						<input type="radio" id={`rate-${rate}`} bind:group={rating} value={rate} />
-						<label for={`rate-${rate}`} class="radio-label">
-							{rate}
-						</label>
-					</div>
-				{/each}
-			</div>
-
-			<button type="submit" disabled={!rating}>Next Question</button>
-		</form>
+		<h1 class=" text-3xl font-bold pb-6">Question {questions[currQ].id}</h1>
+		<div class="flex flex-col w-full items-center bg-blue-200 py-8 rounded gap-8">
+			<p class="text-center px-2">{questions[currQ].scenario}</p>
+			<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center w-full">
+				<div class="flex w-[70%] justify-between m-auto py-4">
+					{#each [1, 2, 3, 4, 5] as rate}
+						<div class="radio-wrapper">
+							<input type="radio" id={`rate-${rate}`} bind:group={rating} value={rate} />
+							<label for={`rate-${rate}`} class="radio-label">
+								{rate}
+							</label>
+						</div>
+					{/each}
+				</div>
+				<button type="submit" disabled={!rating}>Next Question</button>
+			</form>
+		</div>
 	</div>
 </div>
 
