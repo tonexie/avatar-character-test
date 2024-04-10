@@ -1,6 +1,7 @@
 <script>
 	export let image;
 	export let refresher = 0;
+	let previousImage;
 
 	const images = [
 		{ path: '/backgrounds/avatar-landscape1.jpg' },
@@ -15,9 +16,14 @@
 	];
 
 	function getRandomImage() {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        return images[randomIndex].path;
-    }
+		let randomImage;
+		do {
+			const randomIndex = Math.floor(Math.random() * images.length);
+			randomImage = images[randomIndex].path;
+		} while (randomImage === previousImage);
+		previousImage = randomImage;
+		return randomImage;
+	}
 
     if (image === undefined) {
         image = getRandomImage();

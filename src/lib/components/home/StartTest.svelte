@@ -1,6 +1,7 @@
 <script>
-	import { userAnswers, resetAnswers } from '$lib/data/userAnswersStore.js';
+	import { userAnswers } from '$lib/data/userAnswersStore.js';
 	import { goto } from '$app/navigation';
+	import { preloadImages } from '$lib/utils/preloadImages.js';
 
 	const INITIAL_ANSWERS_STATE = [
 		{ Aang: 0, slug: 'aang' },
@@ -18,7 +19,19 @@
 
 	async function resetCharacterAnswers() {
 		$userAnswers = INITIAL_ANSWERS_STATE;
-		console.log('user', $userAnswers);
+		const imageUrls = [
+			'/backgrounds/avatar-landscape1.jpg',
+			'/backgrounds/avatar-landscape2.png',
+			'/backgrounds/avatar-landscape3.png',
+			'/backgrounds/avatar-landscape4.png',
+			'/backgrounds/avatar-landscape5.webp',
+			'/backgrounds/avatar-landscape6.avif',
+			'/backgrounds/avatar-landscape7.jpg',
+			'/backgrounds/avatar-landscape8.png',
+			'/backgrounds/avatar-landscape9.jpg'
+		];
+
+		await preloadImages(imageUrls);
 		await goto('/test');
 	}
 </script>
@@ -26,10 +39,11 @@
 <div class="h-screen flex justify-center items-end m-0 p-0">
 	<button on:click={resetCharacterAnswers} class="button mb-8">
 		<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="svgIcon" viewBox="0 0 16 16">
-      <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
-    </svg>
+			<path
+				d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"
+			/>
+		</svg>
 	</button>
-
 </div>
 
 <style>
@@ -43,30 +57,32 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.23);
+		box-shadow:
+			0 10px 20px rgba(0, 0, 0, 0.2),
+			0 6px 6px rgba(0, 0, 0, 0.23);
 		cursor: pointer;
 		transition-duration: 0.3s;
 		overflow: hidden;
 		position: relative;
-    animation: pulse 2s infinite;
+		animation: pulse 2s infinite;
 	}
 
-  @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
+	@keyframes pulse {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
 
 	.svgIcon {
 		width: 40px;
 		transition-duration: 0.3s;
-    padding-left: 3px;
+		padding-left: 3px;
 	}
 
 	.svgIcon path {
@@ -79,7 +95,7 @@
 		transition-duration: 0.3s;
 		background-color: #003049;
 		align-items: center;
-    animation: none;
+		animation: none;
 	}
 
 	.button:hover .svgIcon {

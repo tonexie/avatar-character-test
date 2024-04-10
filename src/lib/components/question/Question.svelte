@@ -3,20 +3,34 @@
 	import { userAnswers } from '$lib/data/userAnswersStore.js';
 	import { goto } from '$app/navigation';
 	import { createEventDispatcher } from 'svelte';
+	import { preloadImages } from '$lib/utils/preloadImages.js';
+	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
 	const dispatch = createEventDispatcher();
-
 	let rating = '';
+	let key = 0
 	let currQ = 0;
 
-	function handleSubmit() {
-		if (currQ < questions.length) {
-			processUserAnswer();
-			dispatch('next');
-		}
-		if (currQ == questions.length - 1) {
-			const character = determineUserCharacter();
-			goto(`/result/${character.slug}`);
+	// allow for animation on first render
+	onMount(() => {
+		key++;
+	});
+
+	async function handleSubmit() {
+		try {
+			if (currQ < questions.length) {
+				processUserAnswer();
+				dispatch('next');
+			}
+			console.log('currQ:', currQ);
+			if (currQ === questions.length) {
+				const character = determineUserCharacter();
+				await preloadImages([`/portraits/${character.slug}-portrait.webp`]);
+				goto(`/result/${character.slug}`);
+			}
+		} catch (error) {
+			console.error('Error in handleSubmit:', error);
 		}
 	}
 
@@ -32,6 +46,7 @@
 		console.log($userAnswers);
 		rating = undefined;
 		currQ++;
+		key++;
 	}
 
 	function determineUserCharacter() {
@@ -54,29 +69,34 @@
 	}
 </script>
 
-<div class="flex justify-center items-center h-screen">
-	<div
-		class="flex flex-col justify-start items-center bg-sky-500 p-4 rounded-lg shadow-lg w-[60%]"
-	>
-		<h1 class=" text-3xl font-bold pb-6">Question {questions[currQ].id}</h1>
-		<div class="flex flex-col w-full items-center bg-blue-200 py-8 rounded gap-8">
-			<p class="text-center px-2">{questions[currQ].scenario}</p>
-			<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center w-full">
-				<div class="flex w-[70%] justify-between m-auto py-4">
-					{#each [1, 2, 3, 4, 5] as rate}
-						<div class="radio-wrapper">
-							<input type="radio" id={`rate-${rate}`} bind:group={rating} value={rate} />
-							<label for={`rate-${rate}`} class="radio-label">
-								{rate}
-							</label>
+{#if currQ < questions.length}
+	{#key key}
+		<div class="flex justify-center items-center h-screen">
+			<div
+				class="flex flex-col justify-start items-center bg-sky-500 p-4 rounded-lg shadow-lg w-[60%]"
+				in:fade={{ delay: 600, duration: 500 }}
+			>
+				<h1 class=" text-3xl font-bold pb-6">Question {questions[currQ].id}</h1>
+				<div class="flex flex-col w-full items-center bg-blue-200 py-8 rounded gap-8">
+					<p class="text-center px-2">{questions[currQ].scenario}</p>
+					<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center w-full">
+						<div class="flex w-[70%] justify-between m-auto py-4">
+							{#each [1, 2, 3, 4, 5] as rate}
+								<div class="radio-wrapper">
+									<input type="radio" id={`rate-${rate}`} bind:group={rating} value={rate} />
+									<label for={`rate-${rate}`} class="radio-label">
+										{rate}
+									</label>
+								</div>
+							{/each}
 						</div>
-					{/each}
+						<button type="submit" disabled={!rating}>Next Question</button>
+					</form>
 				</div>
-				<button type="submit" disabled={!rating}>Next Question</button>
-			</form>
+			</div>
 		</div>
-	</div>
-</div>
+	{/key}
+{/if}
 
 <style>
 	.radio-wrapper {

@@ -1,5 +1,7 @@
 <script>
   const logo = '/images/avatar-logo.png'
+	import { preloadImages } from '$lib/utils/preloadImages.js';
+  preloadImages([`/images/avatar-hero-v2.jpg`]);
 </script>
 
 <header class='py-4 px-4 sm:px-10  font-[sans-serif] min-h-[70px]'>
