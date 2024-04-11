@@ -1,36 +1,13 @@
 <script>
-	import { userAnswers } from '$lib/data/userAnswersStore.js';
+	import { userAnswers } from '$lib/data/userStore/userAnswersStore.js';
 	import { goto } from '$app/navigation';
 	import { preloadImages } from '$lib/utils/preloadImages.js';
-
-	const INITIAL_ANSWERS_STATE = [
-		{ Aang: 0, slug: 'aang' },
-		{ Katara: 0, slug: 'katara' },
-		{ Sokka: 0, slug: 'sokka' },
-		{ Toph: 0, slug: 'toph' },
-		{ Suki: 0, slug: 'suki' },
-		{ Azula: 0, slug: 'azula' },
-		{ Zuko: 0, slug: 'zuko' },
-		{ Tenzin: 0, slug: 'tenzin' },
-		{ Korra: 0, slug: 'korra' },
-		{ 'Lin Beifong': 0, slug: 'lin_beifong' },
-		{ Asami: 0, slug: 'asami' }
-	];
+	import imageUrls from '$lib/components/background/backgroundImgs.js';
+	import { getInitialState } from '$lib/data/userStore/userAnswersStore.js';
 
 	async function resetCharacterAnswers() {
-		$userAnswers = INITIAL_ANSWERS_STATE;
-		const imageUrls = [
-			'/backgrounds/avatar-landscape1.jpg',
-			'/backgrounds/avatar-landscape2.png',
-			'/backgrounds/avatar-landscape3.png',
-			'/backgrounds/avatar-landscape4.png',
-			'/backgrounds/avatar-landscape5.webp',
-			'/backgrounds/avatar-landscape6.avif',
-			'/backgrounds/avatar-landscape7.jpg',
-			'/backgrounds/avatar-landscape8.png',
-			'/backgrounds/avatar-landscape9.jpg'
-		];
-
+		console.log("initial state:", getInitialState());
+		userAnswers.set(getInitialState());
 		await preloadImages(imageUrls);
 		await goto('/test');
 	}
@@ -62,7 +39,7 @@
 			0 6px 6px rgba(0, 0, 0, 0.23);
 		cursor: pointer;
 		transition-duration: 0.3s;
-		overflow: hidden;
+		/* overflow: hidden; */
 		position: relative;
 		animation: pulse 2s infinite;
 	}

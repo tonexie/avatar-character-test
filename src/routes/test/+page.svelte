@@ -1,6 +1,6 @@
 <script>
 	import Question from '$lib/components/question/Question.svelte';
-	import BackgroundImg from '$lib/components/BackgroundImg.svelte';
+	import BackgroundImg from '$lib/components/background/BackgroundImg.svelte';
 
 	let refresher = 0;
 

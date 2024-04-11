@@ -1,5 +1,6 @@
 <script>
-	import BackgroundImg from '$lib/components/BackgroundImg.svelte';
+	import BackgroundImg from '$lib/components/background/BackgroundImg.svelte';
+	import { backgroundImageStore } from '$lib/data/backgroundStore.js';
 	import { characters } from '$lib/data/results.js';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
@@ -15,17 +16,17 @@
 	let character = characters.find((char) => data.title === char.slug);
 </script>
 
-<BackgroundImg />
+<BackgroundImg image={$backgroundImageStore}/>
 
 <div class="flex justify-center items-center h-screen">
 	{#if character}
 		{#key key}
 			<div
-				class="flex flex-col items-center justify-center max-w-md rounded-lg shadow-lg bg-white h-[90%]"
+				class="flex flex-col items-center justify-start max-w-[24rem] rounded-lg bg-blue-200 h-[35rem]"
 				in:fade={{ delay: 600, duration: 500 }}
 			>
-				<div>
-					<img class="w-full rounded object-cover" src={character.imgUrl} alt={character.name} />
+				<div class="w-full">
+					<img class="w-full rounded-lg object-cover" src={character.imgUrl} alt={character.name} />
 				</div>
 				<div class="px-6 py-4">
 					<h1 class="font-bold text-xl mb-2">{character.name}</h1>

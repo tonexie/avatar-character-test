@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-const INITIAL_ANSWERS_STATE = [
+const initialAnswers = [
   { "Aang": 0, "slug": "aang" },
   { "Katara": 0, "slug": "katara" },
   { "Sokka": 0, "slug": "sokka" },
@@ -14,9 +14,12 @@ const INITIAL_ANSWERS_STATE = [
   { "Asami": 0, "slug": "asami" },
 ]
 
+// create a deep copy for writable, ensure different instances
+export const getInitialState = () => JSON.parse(JSON.stringify(initialAnswers));
+
 export function resetAnswers() {
-  userAnswers.set(INITIAL_ANSWERS_STATE)
+  userAnswers.set(getInitialState())
 }
 
-export const userAnswers = writable(INITIAL_ANSWERS_STATE)
+export const userAnswers = writable(getInitialState())
 
