@@ -31,7 +31,7 @@
 		<button on:click={handleLogoButton} color="primary">
 			<img src={logo} alt="logo" class="w-36" />
 		</button>
-		<div class="flex lg:order-1 max-sm:ml-auto">
+		<div class="flex gap-2 lg:order-1 max-sm:ml-auto">
 			<Button
 				on:click={handleHomeButton}
 				>Home</Button
