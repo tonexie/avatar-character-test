@@ -1,55 +1,52 @@
 <script>
-	import creditsList from '$lib/components/credits/credits.js';
-	import {
-		Table,
-		TableBody,
-		TableBodyCell,
-		TableBodyRow,
-		TableHead,
-		TableHeadCell,
-    Banner 
-	} from 'flowbite-svelte';
+	import creditsList, { portraitImages } from '$lib/components/credits/credits.js';
+	import { Card, Listgroup, Avatar, Carousel } from 'flowbite-svelte';
 </script>
 
 <div class="flex justify-center items-center w-full h-full mt-8">
-	<div
-		class="flex flex-col justify-start items-center max-w-xl  rounded-lg p-8 my-8 shadow-lg"
-	>
-  <Banner>
-		<h1 class="text-4xl font-bold text-white mb-4 underline">Credits</h1>
-    
-  </Banner>
-		<Table color="blue" hoverable={true}>
-			<TableHead>
-				<TableHeadCell>Image Title</TableHeadCell>
-				<TableHeadCell>Artist</TableHeadCell>
-				<TableHeadCell>Image URL</TableHeadCell>
-			</TableHead>
-			<TableBody>
-				{#each creditsList as source}
-					<TableBodyRow>
-						<TableBodyCell>{source.title}</TableBodyCell>
-						<TableBodyCell>{source.author}</TableBodyCell>
-						<TableBodyCell><a href={source.url}>Click Here</a></TableBodyCell>
-					</TableBodyRow>
-				{/each}
-			</TableBody>
-		</Table>
+	<div class="flex flex-col justify-start items-center max-w-[60rem] rounded-lg p-8 my-8 shadow-sm">
+		<Card padding="xl" size="none" color="primary" class="w-full">
+			<div class="flex justify-between items-center mb-4">
+				<h5 class="text-4xl font-bold leading-none text-gray-900 dark:text-white m-auto underline mb-8">
+					Credits
+				</h5>
+			</div>
+			<Carousel images={portraitImages} duration="2000" />
 
-		<div class="flex flex-col w-full bg-blue-50 p-8 rounded">
-			{#each creditsList as source}
-				<li class="mb-2">
-					<p class="text-sm text-gray-800">
-						<span class="font-semibold">{source.title}</span> by
-						<span class="italic">{source.author}</span>.
-						<a
-							href={source.url}
-							class="text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out"
-							>Click here to view.</a
+			<Listgroup items={creditsList} let:item class="border-0 dark:!bg-transparent">
+				<div class="flex items-center space-x-12 rtl:space-x-reverse">
+					{#if item.title === 'All Character Portraits'}
+						<div class="flex flex-col items-center justify-center m-auto">
+							<h2 class="text-xl font-bold text-gray-900 truncate dark:text-white my-2">
+								{item.title}
+              </h2>
+							<p class="text-sm text-gray-500 truncate dark:text-gray-400">
+								<a href={item.url}>Click here to view source</a>
+							</p>
+							<div
+								class="text-base font-semibold text-gray-900 dark:text-white"
+							>
+								{item.artist}
+							</div>
+						</div>
+					{:else}
+						<Avatar size="lg" src={item.src} alt={item.alt} class="object-cover my-2" />
+						<div class="flex-1 min-w-0">
+							<p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+								{item.title}
+							</p>
+							<p class="text-sm text-gray-500 truncate dark:text-gray-400">
+								<a href={item.url}>Click here to view source</a>
+							</p>
+						</div>
+						<div
+							class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
 						>
-					</p>
-				</li>
-			{/each}
-		</div>
+							{item.artist}
+						</div>
+					{/if}
+				</div>
+			</Listgroup>
+		</Card>
 	</div>
 </div>
