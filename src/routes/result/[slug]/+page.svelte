@@ -1,4 +1,5 @@
 <script>
+	import { Card } from 'flowbite-svelte';
 	import BackgroundImg from '$lib/components/background/BackgroundImg.svelte';
 	import { backgroundImageStore } from '$lib/data/backgroundStore.js';
 	import { characters } from '$lib/data/results.js';
@@ -16,24 +17,22 @@
 	let character = characters.find((char) => data.title === char.slug);
 </script>
 
-<BackgroundImg image={$backgroundImageStore}/>
+<BackgroundImg image={$backgroundImageStore} />
 
-<div class="flex justify-center items-center h-screen">
+<div class="flex justify-center items-center h-full">
+
 	{#if character}
 		{#key key}
-			<div
-				class="flex flex-col items-center justify-start max-w-[24rem] rounded-lg bg-blue-200 h-[35rem]"
-				in:fade={{ delay: 600, duration: 500 }}
-			>
-				<div class="w-full">
-					<img class="w-full rounded-lg object-cover" src={character.imgUrl} alt={character.name} />
-				</div>
-				<div class="px-6 py-4">
-					<h1 class="font-bold text-xl mb-2">{character.name}</h1>
+			<div in:fade={{ delay: 600, duration: 500 }} class="max-w-[32rem] m-16">
+
+				<Card img={character.imgUrl} color="primary">
+					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+						{character.name}
+					</h5>
 					{#each character.traits as trait}
-						<p class="text-gray-700 text-base">{trait}</p>
+						<p class="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-tight">{trait}</p>
 					{/each}
-				</div>
+				</Card>
 			</div>
 		{/key}
 	{/if}

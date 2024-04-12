@@ -1,12 +1,11 @@
 <script>
-	import { userAnswers } from '$lib/data/userStore/userAnswersStore.js';
+	import { userAnswers } from '$lib/data/userAnswersStore.js';
 	import { goto } from '$app/navigation';
 	import { preloadImages } from '$lib/utils/preloadImages.js';
 	import imageUrls from '$lib/components/background/backgroundImgs.js';
-	import { getInitialState } from '$lib/data/userStore/userAnswersStore.js';
+	import { getInitialState } from '$lib/data/userAnswersStore.js';
 
 	async function resetCharacterAnswers() {
-		console.log("initial state:", getInitialState());
 		userAnswers.set(getInitialState());
 		await preloadImages(imageUrls);
 		await goto('/test');

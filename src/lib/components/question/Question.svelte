@@ -1,6 +1,6 @@
 <script>
 	import questions from '$lib/data/questions.js';
-	import { userAnswers } from '$lib/data/userStore/userAnswersStore.js';
+	import { userAnswers } from '$lib/data/userAnswersStore.js';
 	import { goto } from '$app/navigation';
 	import { createEventDispatcher } from 'svelte';
 	import { preloadImages } from '$lib/utils/preloadImages.js';

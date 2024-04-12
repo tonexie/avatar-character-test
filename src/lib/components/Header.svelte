@@ -3,35 +3,48 @@
 	import { preloadImages } from '$lib/utils/preloadImages.js';
 	import imageUrls from '$lib/components/background/backgroundImgs.js';
 	import { goto } from '$app/navigation';
+	import { DarkMode, Button } from 'flowbite-svelte';
 
-	async () => {
+	const handleLogoButton = async () => {
 		await preloadImages(['/images/avatar-hero-v2.jpg']);
+		await goto('/');
 	};
 
-	async function handleHomeButton() {
+	const handleHomeButton = async () => {
+		await preloadImages(['/images/avatar-hero-v2.jpg']);
 		await goto('/');
-	}
+	};
 
-	async function handleCreditsButton() {
+	const handleTVInfoButton = async () => {
+		await preloadImages(imageUrls);
+		await goto('/TV-info');
+	};
+
+	const handleCreditsButton = async () => {
 		await preloadImages(imageUrls);
 		await goto('/credits');
-	}
+	};
 </script>
 
 <header class="py-4 px-4 sm:px-10 font-[sans-serif] min-h-[70px]">
 	<div class="flex flex-wrap items-center justify-between gap-5 relative">
-		<a href="/"><img src={logo} alt="logo" class="w-36" /> </a>
+		<button on:click={handleLogoButton} color="primary">
+			<img src={logo} alt="logo" class="w-36" />
+		</button>
 		<div class="flex lg:order-1 max-sm:ml-auto">
-			<button
+			<Button
 				on:click={handleHomeButton}
-				class="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#003049] bg-[#003049] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#003049]"
-				>Home</button
+				>Home</Button
 			>
-			<button
+			<Button
+				on:click={handleTVInfoButton}
+				>TV Info</Button
+			>
+			<Button
 				on:click={handleCreditsButton}
-				class="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#003049] bg-[#003049] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#003049] ml-3"
-				>Credits</button
+				>Credits</Button
 			>
+			<DarkMode class="text-primary-500 dark:text-primary-600 border dark:border-gray-800" />
 		</div>
 	</div>
 </header>
