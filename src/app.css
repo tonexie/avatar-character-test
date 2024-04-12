@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body.loading, body.loading * {
+body.loadingCursor, body.loadingCursor * {
   cursor: wait !important;
 }
