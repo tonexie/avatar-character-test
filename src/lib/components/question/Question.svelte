@@ -15,7 +15,7 @@
 
 	const options = [`Strongly<br/>Disagree`, 'Disagree', 'Neutral', 'Agree', `Strongly<br/>Agree`];
 
-	options.forEach(option => console.log(option));
+	options.forEach((option) => console.log(option));
 
 	// allow for animation on first render
 	onMount(() => {
@@ -81,10 +81,12 @@
 				class="flex flex-col justify-start items-center w-full"
 				in:fade={{ delay: 600, duration: 500 }}
 			>
-				<Card size="lg">
-					<h1 class=" text-3xl font-bold pb-6 text-center">Question {questions[currQ].id}</h1>
+				<Card size="lg" color="primary">
+					<h1 class=" text-3xl font-bold pb-6 text-center dark:text-white">
+						Question {questions[currQ].id}
+					</h1>
 					<div class="flex flex-col w-full items-center py-8 rounded gap-8">
-						<p class="text-center px-2">{questions[currQ].scenario}</p>
+						<p class="text-center px-2 dark:text-gray-200">{questions[currQ].scenario}</p>
 						<form on:submit|preventDefault={handleSubmit} class="flex flex-col items-center w-full">
 							<div class="flex w-[85%] justify-evenly m-auto py-4">
 								{#each [1, 2, 3, 4, 5] as rate}
@@ -96,7 +98,7 @@
 											spacing="0"
 											class="min-w-[1.2rem] min-h-[1.2rem]"
 										/>
-										<Label>
+										<Label color="primary" class="dark:text-gray-200">
 											{@html options[rate - 1]}
 										</Label>
 									</div>

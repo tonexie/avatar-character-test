@@ -26,11 +26,11 @@
 			<div in:fade={{ delay: 600, duration: 500 }} class="max-w-[32rem] m-16">
 
 				<Card img={character.imgUrl} color="primary">
-					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+					<h3 class="mb-2 text-2xl font-bold tracking-tight  dark:text-white">
 						{character.name}
-					</h5>
+					</h3>
 					{#each character.traits as trait}
-						<p class="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-tight">{trait}</p>
+						<p class="mb-3 font-normal text-primary-900 dark:text-gray-200 leading-tight">{trait}</p>
 					{/each}
 				</Card>
 			</div>
