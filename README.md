@@ -8,7 +8,7 @@ Welcome to the Svelte Avatar Quiz App README! This application leverages Svelte 
 - [Technology Stack](#technology-stack)
 - [Installation Guide](#installation-guide)
 - [Feature Walkthrough](#feature-walkthrough)
-  - [Landing Page](#landing-page)
+  - [Landing Page and Dynamic Background](#landing-page)
   - [Quiz Page](#quiz-page)
   - [Results Page](#results-page)
   - [TV Info Page](#tv-info-page)
@@ -49,9 +49,128 @@ This project aims to create an engaging Avatar-themed quiz experience that sorts
 
 Entry point to application, with giant hero image.
 
-### Quiz Page
+#### Svelte Components Used
+- **BackgroundImg**: This component displays a background image. It is located in `$lib/components/background/BackgroundImg.svelte`.
+- **StartTest**: A component that displays the start button for the quiz. It is located in `$lib/components/home/StartTest.svelte`.
 
-This page features a series of questions with options. Users select answers, and their responses are bound using Svelte's reactive state management.
+#### Implementation
+##### My landing page component:
+```svelte
+<script>
+	import BackgroundImg from '$lib/components/background/BackgroundImg.svelte';
+	import StartTest from '$lib/components/home/StartTest.svelte';
+</script>
+
+<div class="flex flex-col overflow-hidden">
+	<BackgroundImg image="./images/avatar-hero-v2.jpg" />
+	<StartTest />
+</div>
+```
+The background image on certain pages of the application is dynamic, changing randomly or upon a defined prop. Svelte store (backgroundImageStore) is used to keep track of the current background image. This allows the background to remain consistent across rerouting when desired.
+
+```svelte
+import { backgroundImageStore } from '$lib/data/backgroundStore.js';
+import imageUrls from '$lib/components/background/backgroundImgs.js';
+
+	export let image;
+	export let refresher = 0;
+
+	function getRandomImage() {
+		let randomImage;
+		do {
+			const randomIndex = Math.floor(Math.random() * imageUrls.length);
+			randomImage = imageUrls[randomIndex];
+		} while (randomImage === $backgroundImageStore);
+		backgroundImageStore.set(randomImage);
+		return randomImage;
+	}
+```
+
+#### Quiz Page
+
+The core of my application. It handles the user interactions in the quiz section and runs an algorithm on them to determine the right avatar charater. It also dynamically displays quiz questions, records user responses, and navigates through the quiz.
+
+
+#### Implementation Details
+
+1. **Dynamic Question Rendering**:
+   Questions are rendered based on the current question index (`currQ`). This index is incremented after each response, updating the displayed question.
+
+   ```svelte
+   {#if currQ < questions.length}
+       <div class="flex justify-center items-center h-screen">
+           ...
+           <p>{questions[currQ].scenario}</p>
+           ...
+       </div>
+   {/if}
+   ```
+1. Handling User Input
+   User responses are captured via radio buttons bound to the rating variable.
+
+    ```svelte
+    {#each [1, 2, 3, 4, 5] as rate}
+        <Radio name="group1" bind:group={rating} value={rate} />
+        <Label>{@html options[rate - 1]}</Label>
+    {/each}
+    ```
+
+2. Submission and Transition:
+   Upon submitting a response, the handleSubmit function is called. This function processes the current answer, determines if the quiz should proceed to the next question or end, and handles navigation to the results page if the quiz is completed.
+
+```svelte
+<script>
+async function handleSubmit() {
+		try {
+			if (currQ < questions.length) {
+				processUserAnswer();
+				dispatch('next');
+			}
+			if (currQ === questions.length) {
+				const character = determineUserCharacter();
+				await preloadImages([`/portraits/${character.slug}-portrait.webp`]);
+				goto(`/result/${character.slug}`);
+			}
+		} catch (error) {
+			console.error('Error in handleSubmit:', error);
+		}
+	}
+</script>
+
+<form on:submit|preventDefault={handleSubmit}>
+    <Button type="submit" disabled={!rating}>Next Question</Button>
+</form>
+```
+If it’s the final question, the function calculates the character that best matches the user's answers by evaluating the scores updated during the quiz:
+
+```javascript
+
+function determineUserCharacter() {
+		const lowestScoreList = $userAnswers.reduce(
+			(acc, curr) => {
+				const value = Object.values(curr)[0];
+				if (value < acc.minValue) {
+					acc.minValue = value;
+					acc.minObjects = [curr];
+				} else if (value === acc.minValue) {
+					acc.minObjects.push(curr);
+				}
+				return acc;
+			},
+			{ minValue: Infinity, minObjects: [] }
+		);
+		const characterResult =
+			lowestScoreList.minObjects[Math.floor(Math.random() * lowestScoreList.minObjects.length)];
+		return characterResult;
+	}
+```
+Animations and Transitions:
+The component uses Svelte's fade transition to animate the entrance of the question card, making the quiz interaction visually appealing.
+
+svelte
+
+in:fade={{ delay: 600, duration: 500 }}
+
 
 ### Results Page
 
