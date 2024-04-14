@@ -5,6 +5,13 @@ export default [
     "url": "https://www.youtube.com/@TeamAvatar"
   },
   {
+    "title": "Movie Information API",
+    "artist": "TMDB",
+    "url": "https://developer.themoviedb.org/docs/getting-started",
+    "src": '/images/tmdb-logo.png',
+    "note": "This application uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB."
+  },
+  {
     "title": "Avatar Homepage Image",
     "artist": "Deviant Art Artist",
     "url": "https://imgur.com/60O6QxQ",

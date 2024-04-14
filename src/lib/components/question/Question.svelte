@@ -28,7 +28,6 @@
 				processUserAnswer();
 				dispatch('next');
 			}
-			console.log('currQ:', currQ);
 			if (currQ === questions.length) {
 				const character = determineUserCharacter();
 				await preloadImages([`/portraits/${character.slug}-portrait.webp`]);
@@ -48,7 +47,6 @@
 			const currChar = charRes[i].character;
 			$userAnswers[i][`${currChar}`] += charScore;
 		}
-		console.log($userAnswers);
 		rating = undefined;
 		currQ++;
 		key++;
@@ -83,7 +81,7 @@
 			>
 				<Card size="lg" color="primary">
 					<h1 class=" text-3xl font-bold pb-6 text-center dark:text-white">
-						Question {questions[currQ].id}
+						Question {questions[currQ].id}/{questions.length}
 					</h1>
 					<div class="flex flex-col w-full items-center py-8 rounded gap-8">
 						<p class="text-center px-2 dark:text-gray-200">{questions[currQ].scenario}</p>

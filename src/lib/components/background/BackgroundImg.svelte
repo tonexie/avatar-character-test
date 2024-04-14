@@ -15,7 +15,8 @@
 		return randomImage;
 	}
 
-	if (image === undefined) {
+	if (image === undefined || image === "") {
+	
 		image = getRandomImage();
 	}
 
