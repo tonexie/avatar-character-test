@@ -1,3 +1,5 @@
+![image](https://github.com/tonexie/avatar-character-test/assets/131140622/9f7a00d8-9ec6-4b87-8388-3e34e274554d)
+Check out the site here! https://avatar-character-quiz.netlify.app/ 
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
