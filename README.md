@@ -144,6 +144,24 @@ The core of my application. It handles the user interactions in the quiz section
     <Button type="submit" disabled={!rating}>Next Question</Button>
 </form>
 ```
+The algorithm for processing he useranswer works by first going through and thinking how each avatar character would answer the questions, then storing their answers. When the user themselves does the test, the algorithm calculates the difference between the character's reponse and the user's response and storing it as a score for each character. Finally, the character with the lowest score is returned at the end, essentially matching the user with the most similar character.
+
+```javascript
+function processUserAnswer() {
+		const charRes = questions[currQ].response;
+
+		// algorithm for updating character scores
+		for (let i = 0; i < charRes.length; i++) {
+			const charScore = Math.abs(charRes[i].response - rating);
+			const currChar = charRes[i].character;
+			$userAnswers[i][`${currChar}`] += charScore;
+		}
+		rating = undefined;
+		currQ++;
+		key++;
+	}
+```
+
 If it’s the final question, the function calculates the character that best matches the user's answers by evaluating the scores updated during the quiz:
 
 ```javascript
