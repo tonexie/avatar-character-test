@@ -28,7 +28,8 @@ This project aims to create an engaging Avatar-themed quiz experience that sorts
 - **Tailwind CSS**: A utility-first CSS framework.
 - **Node.js**: JavaScript runtime.
 
-## Installation Guide (Alternatively there is a live demo link above to view site)
+## Installation Guide
+(Alternatively there is a live demo link above to view site)
 
 1. **Clone the repository:**
    ```bash
