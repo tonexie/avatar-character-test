@@ -1,6 +1,6 @@
 # Svelte Avatar Quiz App
 
-Welcome to the Svelte Avatar Quiz App README! This application leverages Svelte integrated with the Flowbite UI component library to deliver a rich, interactive web application. Our app features a dynamic quiz platform, a results page utilizing Svelte's slug routing, an information page with API integration, and a visually appealing credits page.
+Welcome to the Svelte Avatar Quiz App! This application uses Svelte integrated with the Flowbite UI component library to deliver a fun and interactive web application. My app features a dynamic quiz platform, a results page utilizing Svelte's slug routing, an search page with API integration to a TV database, and a visually appealing credits page.
 
 ## Table of Contents
 
@@ -21,10 +21,10 @@ This project aims to create an engaging Avatar-themed quiz experience that sorts
 
 ## Technology Stack
 
-- **Svelte**: A modern frontend compiler that provides a new approach to building user interfaces.
-- **Flowbite**: A component library built on top of Tailwind CSS that provides ready-made components.
-- **Tailwind CSS**: A utility-first CSS framework for rapidly building custom designs.
-- **Node.js**: JavaScript runtime built on Chrome's V8 JavaScript engine.
+- **Svelte**: A modern frontend framework.
+- **Flowbite**: A UI component library for Svelte. I used extentensively throughout my app, including building a theme selector.
+- **Tailwind CSS**: A utility-first CSS framework.
+- **Node.js**: JavaScript runtime.
 
 ## Installation Guide (Alternatively there is a live demo link above to view site)
 
@@ -65,6 +65,7 @@ Entry point to application, with giant hero image.
 	<BackgroundImg image="./images/avatar-hero-v2.jpg" />
 	<StartTest />
 </div>
+
 ```
 The background image on certain pages of the application is dynamic, changing randomly or upon a defined prop. Svelte store (backgroundImageStore) is used to keep track of the current background image. This allows the background to remain consistent across rerouting when desired.
 
@@ -86,12 +87,12 @@ import imageUrls from '$lib/components/background/backgroundImgs.js';
 	}
 ```
 
-#### Quiz Page
+### Quiz Page
 
 The core of my application. It handles the user interactions in the quiz section and runs an algorithm on them to determine the right avatar charater. It also dynamically displays quiz questions, records user responses, and navigates through the quiz.
 
 
-#### Implementation Details
+#### Implementation
 
 1. **Dynamic Question Rendering**:
    Questions are rendered based on the current question index (`currQ`). This index is incremented after each response, updating the displayed question.
@@ -120,21 +121,21 @@ The core of my application. It handles the user interactions in the quiz section
 
 ```svelte
 <script>
-async function handleSubmit() {
-		try {
-			if (currQ < questions.length) {
-				processUserAnswer();
-				dispatch('next');
+	async function handleSubmit() {
+			try {
+				if (currQ < questions.length) {
+					processUserAnswer();
+					dispatch('next');
+				}
+				if (currQ === questions.length) {
+					const character = determineUserCharacter();
+					await preloadImages([`/portraits/${character.slug}-portrait.webp`]);
+					goto(`/result/${character.slug}`);
+				}
+			} catch (error) {
+				console.error('Error in handleSubmit:', error);
 			}
-			if (currQ === questions.length) {
-				const character = determineUserCharacter();
-				await preloadImages([`/portraits/${character.slug}-portrait.webp`]);
-				goto(`/result/${character.slug}`);
-			}
-		} catch (error) {
-			console.error('Error in handleSubmit:', error);
 		}
-	}
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
@@ -164,25 +165,51 @@ function determineUserCharacter() {
 		return characterResult;
 	}
 ```
-Animations and Transitions:
-The component uses Svelte's fade transition to animate the entrance of the question card, making the quiz interaction visually appealing.
 
-svelte
+The component also uses Svelte's built in animations for a fade transition to animate the entrance of the question card.
 
+```svelte
 in:fade={{ delay: 600, duration: 500 }}
-
+```
 
 ### Results Page
 
 Utilizes dynamic routes (slugs) to display personalized results based on user answers. Here, the URL reflects the character outcome, e.g., `/results/aang`.
+![image](https://github.com/tonexie/avatar-character-test/assets/131140622/b8e50580-ba76-4ca0-ba76-d7018963b803)
 
 ### TV Info Page
 
-Displays detailed information about the "Avatar: The Last Airbender" series fetched from an external API. Includes a search function to query information on other TV shows.
+Displays TV information about the "Avatar: The Last Airbender" series fetched from an external API: TMDB. Includes a search function to query information on other TV shows.
 
+The API call is done through a GET request using fetch:
+``` javascript
+async function searchTVShows(query) {
+    const url = `https://api.themoviedb.org/3/search/tv?query=${encodeURIComponent(query)}&...`;
+    const headers = {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Accept': 'application/json'
+    };
+    const response = await fetch(url, { headers });
+    if (!response.ok) throw new Error('Network response was not ok');
+    return await response.json();
+}
+```
+The search results are stored in the tvShows array and displayed using Svelte's {#each} block. Each show is rendered inside a Card component from flowbite-svelte.
+``` svelte
+{#each tvShows as show}
+  <Card img={`https://image.tmdb.org/t/p/w500${show.poster_path}`} ...>
+    <h3>{show.original_name}</h3>
+    <p>{show.overview}</p>
+    <p><strong>Air Date:</strong> {show.first_air_date}</p>
+    <p><strong>Rating:</strong> {show.vote_average} ({show.vote_count} votes)</p>
+  </Card>
+{/each}
+```
 ### Credits Page
 
-Credits all sources and provides aesthetic details about the development and design contributions.
+Credits all my image sources and the API provider.
+![image](https://github.com/tonexie/avatar-character-test/assets/131140622/f11e0e2c-924b-462f-bdaa-8e8f6c22b838)
+
 
 ## References
 
