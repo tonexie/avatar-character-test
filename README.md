@@ -1,6 +1,8 @@
 # Svelte Avatar Quiz App
+![image](https://github.com/tonexie/avatar-character-test/assets/131140622/434d300a-48b0-4234-8bd0-ce37ba4c030f)
 
 Welcome to the Svelte Avatar Quiz App! This application uses Svelte integrated with the Flowbite UI component library to deliver a fun and interactive web application. My app features a dynamic quiz platform, a results page utilizing Svelte's slug routing, an search page with API integration to a TV database, and a visually appealing credits page.
+Check out the live site! https://avatar-character-quiz.netlify.app/
 
 ## Table of Contents
 
