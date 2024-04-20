@@ -24,7 +24,7 @@ This project aims to create an engaging Avatar-themed quiz experience that sorts
 ## Technology Stack
 
 - **Svelte**: A modern frontend framework.
-- **Flowbite**: A UI component library for Svelte. I used extentensively throughout my app, including building a theme selector.
+- **Flowbite**: A UI component library for Svelte. I used it extensively throughout my app, including building a theme selector.
 - **Tailwind CSS**: A utility-first CSS framework.
 - **Node.js**: JavaScript runtime.
 
@@ -176,7 +176,7 @@ in:fade={{ delay: 600, duration: 500 }}
 
 ### Results Page
 
-Utilizes dynamic routes (slugs) to display personalized results based on user answers. Here, the URL reflects the character outcome, e.g., `/results/aang`.
+Utilizes dynamic routes (slugs) to display personalized results based on user answers. Here, the URL reflects the character outcome, e.g., `/result/aang`.
 
 ![image](https://github.com/tonexie/avatar-character-test/assets/131140622/b8e50580-ba76-4ca0-ba76-d7018963b803)
 
