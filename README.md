@@ -56,7 +56,7 @@ Entry point to application, with giant hero image.
 - **StartTest**: A component that displays the start button for the quiz. It is located in `$lib/components/home/StartTest.svelte`.
 
 #### Implementation
-##### My landing page component:
+My landing page component:
 ```svelte
 <script>
 	import BackgroundImg from '$lib/components/background/BackgroundImg.svelte';
@@ -177,6 +177,7 @@ in:fade={{ delay: 600, duration: 500 }}
 ### Results Page
 
 Utilizes dynamic routes (slugs) to display personalized results based on user answers. Here, the URL reflects the character outcome, e.g., `/results/aang`.
+
 ![image](https://github.com/tonexie/avatar-character-test/assets/131140622/b8e50580-ba76-4ca0-ba76-d7018963b803)
 
 ### TV Info Page
